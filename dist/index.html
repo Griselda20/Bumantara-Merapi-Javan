@@ -16,21 +16,34 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="analyst-name">
                             Analyst Name
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="analyst-name" type="text" placeholder="Your name">
+                        <select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="analyst-name">
+                            <option value="">Select Analyst</option>
+                            <!-- Populate with actual options -->
+                        </select>
                     </div>
                     <div class="w-1/2 ml-2">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="project">
                             Project
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="project" type="text" placeholder="Project name">
+                        <select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="project">
+                            <option value="">Select Project</option>
+                            <!-- Populate with actual options -->
+                        </select>
                     </div>
                 </div>
 
                 <div class="mb-4">
                     <h2 class="text-xl font-semibold mb-2">Target Hari Ini</h2>
                     <div class="flex items-center mb-4">
-                        <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mr-2" type="text" placeholder="Nama Anggota">
+                        <select class="shadow border rounded flex-grow py-2 px-3 text-gray-700 mr-2" id="member-name">
+                            <option value="">Nama Anggota</option>
+                            <!-- Populate with actual options -->
+                        </select>
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mx-2" type="text" placeholder="Url Task">
+                        <select class="shadow border rounded flex-grow py-2 px-3 text-gray-700 mr-2" id="status-task">
+                            <option value="">Status Task</option>
+                            <!-- Populate with actual options -->
+                        </select>
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                             +
                         </button>
@@ -40,7 +53,10 @@
                 <div class="mb-6">
                     <h2 class="text-xl font-semibold mb-2">Task Terlambat</h2>
                     <div class="flex items-center mb-4">
-                        <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mr-2" type="text" placeholder="Nama Anggota">
+                        <select class="shadow border rounded flex-grow py-2 px-3 text-gray-700 mr-2" id="overdue-member-name">
+                            <option value="">Nama Anggota</option>
+                            <!-- Populate with actual options -->
+                        </select>
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mx-2" type="text" placeholder="Url Task">
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700" type="text" placeholder="Alasan Terlambat">
                         <button class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
@@ -53,12 +69,4 @@
                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" type="button">
                         Cancel
                     </button>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Submit
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px
