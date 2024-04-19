@@ -6,15 +6,21 @@
     <title>Daily Scrum Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
     <script>
-      function addElement(parentId, elementsHtml) {
-        const parent = document.getElementById(parentId);
-        parent.insertAdjacentHTML('beforeend', elementsHtml);
-      }
-
-      function removeElement(elementId) {
-        const element = document.getElementById(elementId);
-        element.parentNode.removeChild(element);
-      }
+        function addTask(listId) {
+            const list = document.getElementById(listId);
+            const newRow = list.firstElementChild.cloneNode(true);
+            newRow.querySelectorAll('input').forEach(input => input.value = '');
+            newRow.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+            list.appendChild(newRow);
+          }
+        
+          function removeTask(taskElement) {
+            // Only remove the task if there is more than one in the list
+            const taskList = taskElement.parentNode;
+            if (taskList.childElementCount > 1) {
+              taskList.removeChild(taskElement);
+            }
+          }
       
       function createInputGroupId() {
         return 'input-group-' + Math.random().toString(16).slice(2);
@@ -43,8 +49,8 @@
 </head>
 <body class="bg-gray-100">
     <div class="max-w-4xl mx-auto py-10">
-        <h1 class="text-3xl font-semibold mb-6">Daily Scrum</h1>
         <div class="bg-white rounded-lg shadow overflow-hidden">
+            <h1 class="text-3xl font-semibold mb-6 text-center">Daily Scrum</h1>
             <div class="p-6">
                 <div class="flex mb-8">
                     <div class="w-1/2 mr-2">
@@ -52,7 +58,6 @@
                             Analyst Name
                         </label>
                         <select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="analyst-name">
-                            <option value="">Select...</option>
                             <option value="purwa_darozatun">Purwa Darozatun</option>
                         </select>
                     </div>
@@ -61,7 +66,7 @@
                             Project
                         </label>
                         <select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="project">
-                            <option value="">Select...</option>
+                            <option value="">Select Project</option>
                             <!-- Populate with actual options -->
                         </select>
                     </div>
@@ -69,24 +74,25 @@
 
                 <div id="target-hari-ini" class="mb-4">
                     <h2 class="text-xl font-semibold mb-2">Target Hari Ini</h2>
-                    <!-- Initial input group -->
-                    <div class="flex items-center mb-4">
+                    <div id="target-hari-ini-list" class="space-y-4">
+                      <div class="flex items-center mb-2">
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mr-2" type="text" placeholder="Nama Anggota">
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mx-2" type="text" placeholder="Url Task">
                         <select class="shadow border rounded flex-grow py-2 px-3 text-gray-700 mr-2">
-                            <option value="">Status Task</option>
-                            <option value="ready">Ready</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="ready_for_test">Ready For Test</option>
+                          <option value="">Status Task...</option>
+                          <option value="ready">Ready</option>
+                          <option value="feedback">Feedback</option>
+                          <option value="ready_for_test">Ready For Test</option>
                         </select>
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" onclick="removeElement(this.parentNode.id)">
-                          -
+                        <button onclick="removeTask(this.parentElement)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded">
+                          <!-- SVG for trash icon -->
                         </button>
+                      </div>
                     </div>
-                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="addInputGroup('target-hari-ini')">
-                        Add Task
+                    <button onclick="addTask('target-hari-ini-list')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      <!-- SVG for plus icon -->
                     </button>
-                </div>
+                  </div>
 
                 <div id="task-terlambat" class="mb-6">
                     <h2 class="text-xl font-semibold mb-2">Task Terlambat</h2>
@@ -95,12 +101,13 @@
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mr-2" type="text" placeholder="Nama Anggota">
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700 mx-2" type="text" placeholder="Url Task">
                         <input class="shadow appearance-none border rounded flex-grow py-2 px-3 text-gray-700" type="text" placeholder="Alasan Terlambat">
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" onclick="removeElement(this.parentNode.id)">
-                          -
+                        <button onclick="removeTask(this.parentElement)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded">
+                          <!-- SVG for trash icon -->
                         </button>
+                      </div>
                     </div>
-                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onclick="addInputGroup('task-terlambat')">
-                        Add Overdue Task
+                    <button onclick="addTask('target-hari-ini-list')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      <!-- SVG for plus icon -->
                     </button>
                 </div>
 
